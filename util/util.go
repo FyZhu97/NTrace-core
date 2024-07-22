@@ -45,7 +45,7 @@ func LookupAddr(addr string) ([]string, error) {
 
 // LocalIPPort get the local ip and port based on our destination ip
 func LocalIPPort(dstip net.IP) (net.IP, int) {
-	serverAddr, err := net.ResolveUDPAddr("udp", dstip.String()+":12345")
+	serverAddr, err := net.ResolveUDPAddr("udp", net.JoinHostPort(dstip.String(), "12345"))
 	if err != nil {
 		log.Fatal(err)
 	}
